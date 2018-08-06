@@ -1,0 +1,71 @@
+.FormCard{
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 5%;
+    /* height: 300px; */
+
+}
+
+.MuiFormControl-root-66{
+    margin-bottom: 10% !important
+}
+
+.Button_createAccount{
+    width: 40%;
+    margin: auto;
+}
+
+.errorMessage{
+    color: rgb(212, 16, 16);
+    text-align: center;
+    margin-top: 5%
+}
+
+.Creat-account-button-container{
+    text-align: center;
+    /* width: 50%;
+    margin: auto; */
+    margin-top: 20px
+}
+.Creat-account-button{
+     background: transparent;
+     border: none;
+     outline: none;
+     font-size: 100%;
+     color: #3f51b5;
+     cursor: pointer;
+     -webkit-transition: font-size 4s, color .5s, ;
+    transition: font-size .4s, color .5s , margin-left 10s;
+}
+.Creat-account-button:hover{
+    font-size: 103%;
+}
+.Creat-account-button:active{
+    font-size: 100%;
+    /* text-decoration: underline; */
+    color: #213dd8;
+    background: white;
+}
+
+
+@media screen and (max-width: 1250px) {
+    .FormCard {
+        width: 50% !important ;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .FormCard {
+        width: 60% !important ;
+    }
+}
+@media screen and (max-width: 850px) {
+    .FormCard {
+        width: 80% !important ;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .FormCard {
+        width: 90% !important ;
+    }
+}

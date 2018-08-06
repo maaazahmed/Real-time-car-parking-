@@ -1,0 +1,204 @@
+
+.DialogBox{
+    width: 100% !important
+}
+
+.MuiDialog-paperWidthSm-71{
+    min-width: 45%;
+    max-width: 45%;
+}
+
+
+.content{
+    display: flex;
+    justify-content: space-between;
+}
+
+.content_div_1{
+    height: 100vh;
+    width: 25%;
+    position: fixed;
+    z-index: 0;
+    left: 0;
+    background-color: #dcdff1;
+    overflow-x: none;
+    transition: 0.5s;
+    /* padding-top: 47px; */
+    
+
+}
+.content_div_2{
+    height: 100%;
+    width: 75%;
+    position: fixed;
+     z-index: 1; 
+     right: 0;
+     /* top: 50px; */
+     background-color: #ffffff;
+    /* overflow-x: scroll; */
+    transition: 0.5s;
+    /* padding-top: 47px; */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap
+}
+
+.CardContent_for_Parking_slots_div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px;
+    height: 100%;
+}
+
+
+.Parking_area_List{
+    color: #ffffff;
+    font-size: 110%;
+}
+
+.parkingSlotList{
+    color: #fafafa;
+    font-size: 80%;
+    font-style: italic
+}
+
+
+
+#style-3::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+    
+}
+
+#style-3::-webkit-scrollbar
+{
+	width: 10px;
+    background-color: #F5F5F5;
+}
+
+#style-3::-webkit-scrollbar-thumb
+{
+    background-color: #acacac;
+}
+
+#style-4::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+    
+}
+
+#style-4::-webkit-scrollbar
+{
+	width: 10px;
+    background-color: #F5F5F5;
+    border-radius: 50px 
+}
+
+#style-4::-webkit-scrollbar-thumb
+{
+    background-color: #acacac;
+}
+
+.scrollbar{
+	float: left;
+	height: 100%;
+	width: 100%;
+    background-color: #3f51b5;
+	overflow-y: scroll;
+    margin-bottom: 50px;
+    margin-top: 30px;
+
+}
+
+.scrollbar_2{
+	float: left;
+	height: 100%;
+	width: 100%;
+    /* background-color: #; */
+	overflow-y: scroll;
+    margin-bottom: 25px;
+    padding: 20px;
+    margin-top: 30px;
+
+}
+
+.force-overflow
+{
+	min-height: 450px;
+}
+
+
+.slote_CardContent{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+
+.slots_button{
+    width: 13%;
+    height: 100px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #3f51b5;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 90%;
+    -webkit-transition: background-color 2s,color .5s, -webkit-transform 2s;
+    transition: background-color .5s, transform 2s, color .5s;
+}
+
+
+.slots_button:hover{
+    color: #ffffff;
+    background-color: #3f51b5;
+}
+.slots_button:active{
+    color: #ffffff;
+    background-color: #d8d9dd;
+
+}
+
+.MuiPaper-rounded-10{
+    border-radius: 0px !important
+}
+.MuiDialog-paperWidthSm-91{
+    width: 100% !important
+}
+
+.AddButton{
+    position: fixed;
+    right: 25px;
+    bottom: 15px;
+}
+
+
+.Nothing_to_show_div{
+    display:  flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* border: 1px solid; */
+    background-color: #f2f2f2
+
+
+}
+
+.Nothing_to_show_text{
+    color: #c5c5c5;
+    /* font-weight: bold; */
+    font-size: 210%;
+    border: dotted 2px #cfcfcf;
+    border-radius: 5px;
+    padding: 10px ;
+    padding-left: 50px;
+    padding-right: 50px;
+    font-style: italic;
+    background-color: #f2f2f2
+}
