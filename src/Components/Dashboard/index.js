@@ -119,8 +119,10 @@ class Dashboard extends Component {
         this.props.AreaNameAction(data.parkingAreaVal)
 
         this.props.Parking_Time.parkingTime.map((value) => {
-            // console.log(value.id, '////')
-            if (value.startTime <= new Date().getTime() && value.endTime >= new Date().getTime() && data.id === value.parkinID) {
+            let slotes = data.bookingArr;
+            if (value.startTime <= new Date().getTime() && value.endTime
+            >= new Date().getTime() && data.id === value.parkinID && value.nodeNumber) {
+                console.log(value.nodeNumber)
                 let slotes = data.bookingArr;
                 slotes[value.nodeNumber].active = true;
                 slotes[value.nodeNumber].endTime = value.endTime;
@@ -132,7 +134,8 @@ class Dashboard extends Component {
                 slotes[value.nodeNumber].sloteNumber = value.sloteNumber;
                 database.child(`Parkings/${value.parkinID}/bookingArr/`).set(slotes)
             }
-            else {
+            
+            else  {
                 let slotes = data.bookingArr;
                 slotes[value.nodeNumber].active = false;
                 slotes[value.nodeNumber].endTime = value.endTime;
@@ -148,21 +151,12 @@ class Dashboard extends Component {
                 // }
             }
         })
-        // data.bookingArr.map((val) => {
-        //     let currentTime = new Date().getTime()
-        //     if (val.endTime < currentTime) {
-        //         let slotes = data.bookingArr;
-        //         slotes[val.index].active = false;
-        //         database.child(`Parkings/${val.parkinID}/bookingArr/`).set(slotes)
-        //     }
-        // })
+       
     }
 
     bookingCuntineu() {
         let startTime = new Date(this.state.startTime).getTime()
         let endTime = new Date(this.state.endTime).getTime()
-        // console.log(this.props.parkinID.parkinID)
-        // console.log(this.props.allSlots.slots)
         if (endTime <= startTime) {
             alert("Please select correct time")
         }
@@ -210,6 +204,7 @@ class Dashboard extends Component {
             do {
                 if (this.props.Parking_Time.parkingTime[i] === undefined) {
                     let slotObj = {
+                        // active:true,
                         sloteNumber: slots[index].sloteNumber,
                         areaName: slots[index].areaName,
                         parkinID: slots[index].parkinID,
@@ -284,6 +279,8 @@ class Dashboard extends Component {
                 numberOfSlots: this.state.numberOfSlots,
                 bookingArr: [],
             }
+
+            ParkingObj.bookingArr = []
             for (var i = 0; i < Number(this.state.numberOfSlots); i++) {
                 let bookingObj = { active: false, index: i };
                 ParkingObj.bookingArr.push(bookingObj);
