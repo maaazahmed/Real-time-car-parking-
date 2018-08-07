@@ -206,7 +206,6 @@ class Dashboard extends Component {
             // })
             console.log(index)
 
-
             var i = 0;
             do {
                 if (this.props.Parking_Time.parkingTime[i] === undefined) {
@@ -220,21 +219,28 @@ class Dashboard extends Component {
                         currentUserID: slots[index].currentUserID,
                     }
                     database.child(`parking-time`).push(slotObj)
+                    console.log("First Condetion in running")
                     break;
-
                 }
+
 
                 else if (this.props.Parking_Time.parkingTime[i].startTime <= startTime
                     && this.props.Parking_Time.parkingTime[i].endTime >= endTime
                     && this.props.Parking_Time.parkingTime[i].parkinID === parkinID
                     && this.props.Parking_Time.parkingTime[i].nodeNumber === index) {
-                    // console.log(this.props.Parking_Time.parkingTime[i], "======1")
                     alert("This slot is already selected")
+                    console.log("2nd Condetion in running")
                     break;
+
                 }
 
-                else if (this.props.Parking_Time.parkingTime[i].parkinID === parkinID
-                    && this.props.Parking_Time.parkingTime[i].nodeNumber !== index) {
+
+                else if (
+                    this.props.Parking_Time.parkingTime[i].startTime <= startTime
+                    && this.props.Parking_Time.parkingTime[i].endTime >= endTime
+                    // && this.props.Parking_Time.parkingTime[i].parkinID === parkinID
+                    && this.props.Parking_Time.parkingTime[i].nodeNumber === index
+                ) {
                     let slotObj = {
                         sloteNumber: slots[index].sloteNumber,
                         areaName: slots[index].areaName,
@@ -245,14 +251,11 @@ class Dashboard extends Component {
                         currentUserID: slots[index].currentUserID,
                     }
                     database.child(`parking-time`).push(slotObj)
-                    console.log(this.props.Parking_Time.parkingTime.length)
-                    break;
                     // database.child(`selected-parking/${currentUserID}`).push(slotObj)
+                    // console.log(this.props.Parking_Time.parkingTime.length)
+                    break;
                 }
-                console.log(index, "==", this.props.Parking_Time.parkingTime[i].nodeNumber)
-
                 i++;
-                break;
             } while (i <= this.props.Parking_Time.parkingTime.length);
 
 
