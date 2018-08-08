@@ -120,8 +120,8 @@ class Dashboard extends Component {
 
         this.props.Parking_Time.parkingTime.map((value) => {
             let slotes = data.bookingArr;
-            if (value.startTime <= new Date().getTime() && value.endTime
-            >= new Date().getTime() && data.id === value.parkinID && value.nodeNumber) {
+            if (value.startTime <= new Date().getTime() && value.endTime >=
+                new Date().getTime() && data.id === value.parkinID) {
                 console.log(value.nodeNumber)
                 let slotes = data.bookingArr;
                 slotes[value.nodeNumber].active = true;
@@ -132,10 +132,25 @@ class Dashboard extends Component {
                 slotes[value.nodeNumber].index = value.nodeNumber;
                 slotes[value.nodeNumber].parkinID = value.parkinID;
                 slotes[value.nodeNumber].sloteNumber = value.sloteNumber;
-                database.child(`Parkings/${value.parkinID}/bookingArr/`).set(slotes)
+                database.child(`Parkings/${value.parkinID}/bookingArr/${value.nodeNumber}`).set(slotes[value.nodeNumber])
+               
+                // if (value.endTime < new Date().getTime() && data.id === value.parkinID) {
+                //     database.child(`parking-time/${value.id}/`).remove()
+                //     let slotes = data.bookingArr;
+                //     slotes[value.nodeNumber].active = false;
+                //     slotes[value.nodeNumber].endTime = value.endTime;
+                //     slotes[value.nodeNumber].startTime = value.startTime;
+                //     slotes[value.nodeNumber].areaName = value.areaName;
+                //     slotes[value.nodeNumber].currentUserID = value.currentUserID;
+                //     slotes[value.nodeNumber].index = value.nodeNumber;
+                //     slotes[value.nodeNumber].parkinID = value.parkinID;
+                //     slotes[value.nodeNumber].sloteNumber = value.sloteNumber;
+                //     database.child(`Parkings/${value.parkinID}/bookingArr/${value.nodeNumber}`).set(slotes[value.nodeNumber])
+                // }
+                
             }
-            
-            else  {
+           else if (value.endTime < new Date().getTime() && data.id === value.parkinID) {
+                database.child(`parking-time/${value.id}/`).remove()
                 let slotes = data.bookingArr;
                 slotes[value.nodeNumber].active = false;
                 slotes[value.nodeNumber].endTime = value.endTime;
@@ -145,13 +160,25 @@ class Dashboard extends Component {
                 slotes[value.nodeNumber].index = value.nodeNumber;
                 slotes[value.nodeNumber].parkinID = value.parkinID;
                 slotes[value.nodeNumber].sloteNumber = value.sloteNumber;
-                database.child(`Parkings/${value.parkinID}/bookingArr/`).set(slotes)
-                // if(data.id == value.parkinID){
-                //     database.child(`parking-time/${value.id}/`).remove()
-                // }
+                database.child(`Parkings/${value.parkinID}/bookingArr/${value.nodeNumber}`).set(slotes[value.nodeNumber])
             }
+            // else  {
+            //     let slotes = data.bookingArr;
+            //     slotes[value.nodeNumber].active = false;
+            //     slotes[value.nodeNumber].endTime = value.endTime;
+            //     slotes[value.nodeNumber].startTime = value.startTime;
+            //     slotes[value.nodeNumber].areaName = value.areaName;
+            //     slotes[value.nodeNumber].currentUserID = value.currentUserID;
+            //     slotes[value.nodeNumber].index = value.nodeNumber;
+            //     slotes[value.nodeNumber].parkinID = value.parkinID;
+            //     slotes[value.nodeNumber].sloteNumber = value.sloteNumber;
+            //     database.child(`Parkings/${value.parkinID}/bookingArr/${value.nodeNumber}`).set(slotes[value.nodeNumber])
+            //     if(value.endTime < new Date().getTime() && data.id === value.parkinID){
+            //         database.child(`parking-time/${value.id}/`).remove()
+            //     }
+            // }
         })
-       
+
     }
 
     bookingCuntineu() {
