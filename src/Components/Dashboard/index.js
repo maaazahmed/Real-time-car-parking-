@@ -133,9 +133,9 @@ class Dashboard extends Component {
                 slotes[value.nodeNumber].parkinID = value.parkinID;
                 slotes[value.nodeNumber].sloteNumber = value.sloteNumber;
                 database.child(`Parkings/${value.parkinID}/bookingArr/${value.nodeNumber}`).set(slotes[value.nodeNumber])
-            
+
             }
-           else if (value.endTime < new Date().getTime() && data.id === value.parkinID) {
+            else if (value.endTime < new Date().getTime() && data.id === value.parkinID) {
                 database.child(`parking-time/${value.id}/`).remove()
                 let slotes = data.bookingArr;
                 slotes[value.nodeNumber].active = false;
@@ -148,21 +148,7 @@ class Dashboard extends Component {
                 slotes[value.nodeNumber].sloteNumber = value.sloteNumber;
                 database.child(`Parkings/${value.parkinID}/bookingArr/${value.nodeNumber}`).set(slotes[value.nodeNumber])
             }
-            // else  {
-            //     let slotes = data.bookingArr;
-            //     slotes[value.nodeNumber].active = false;
-            //     slotes[value.nodeNumber].endTime = value.endTime;
-            //     slotes[value.nodeNumber].startTime = value.startTime;
-            //     slotes[value.nodeNumber].areaName = value.areaName;
-            //     slotes[value.nodeNumber].currentUserID = value.currentUserID;
-            //     slotes[value.nodeNumber].index = value.nodeNumber;
-            //     slotes[value.nodeNumber].parkinID = value.parkinID;
-            //     slotes[value.nodeNumber].sloteNumber = value.sloteNumber;
-            //     database.child(`Parkings/${value.parkinID}/bookingArr/${value.nodeNumber}`).set(slotes[value.nodeNumber])
-            //     if(value.endTime < new Date().getTime() && data.id === value.parkinID){
-            //         database.child(`parking-time/${value.id}/`).remove()
-            //     }
-            // }
+
         })
 
     }
@@ -188,31 +174,6 @@ class Dashboard extends Component {
             slots[index].areaName = this.props.areaName.areaName
             slots[index].parkinID = this.props.parkinID.parkinID
             slots[index].startTime = startTime;
-            // database.child(`Parkings/${parkinID}/bookingArr`).set(slots)
-
-            // this.props.Parking_Time.parkingTime.map((value) => {
-            // if (value.startTime <= startTime && value.endTime >= endTime && value.parkinID === parkinID) {
-            //     alert("This slot is already selected")
-            // }
-            // else {
-            //     let slotObj = {
-            //         sloteNumber: slots[index].sloteNumber,
-            //         areaName: slots[index].areaName,
-            //         parkinID: slots[index].parkinID,
-            //         nodeNumber: index,
-            //         endTime: slots[index].endTime,
-            //         startTime: slots[index].startTime,
-            //         currentUserID: slots[index].currentUserID,
-            //     }
-            //     console.log(value.startTime <= startTime && value.endTime >= endTime && value.parkinID === parkinID, "=============")
-            //     // if(value.startTime <= startTime){
-            //     database.child(`parking-time`).push(slotObj)
-            //     // }
-            //     // database.child(`selected-parking/${currentUserID}`).push(slotObj)
-            // }
-            // })
-            console.log(index)
-
             var i = 0;
             do {
                 if (this.props.Parking_Time.parkingTime[i] === undefined) {
@@ -306,7 +267,6 @@ class Dashboard extends Component {
 
     render() {
         let parkingList = this.props.ParkingList.parkingList;
-        // console.log(parkingList)
         return (
             <div className="App">
                 <Header heading="Dashboard" />
