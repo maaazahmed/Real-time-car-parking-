@@ -43,13 +43,7 @@ class AllParkins extends Component {
     deleteParking(data, indexNum) {
         let slots = {
             active: false,
-            areaName: "Parking 1",
-            currentUserID: null,
-            endTime: null,
             index: data.nodeNumber,
-            parkinID: data.parkinID,
-            sloteNumber: data.sloteNumber,
-            startTime: null,
         }
         let allBooking = this.props.BookingLis.allBooking
         allBooking.splice(indexNum, 1);

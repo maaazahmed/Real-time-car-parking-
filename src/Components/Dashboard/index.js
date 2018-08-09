@@ -30,7 +30,8 @@ import {
     selectedData,
     AreaNameAction,
     currentUserData,
-    ParkingTime
+    ParkingTime,
+    ParkingTimeEmpty
 } from "../../store/action/action"
 
 
@@ -73,11 +74,11 @@ class Dashboard extends Component {
             this.props.ParkingAction(obj)
         })
 
-        database.child("parking-time").on("child_added", (snapshot) => {
-            let obj_2 = snapshot.val();
-            obj_2.id = snapshot.key;
-            this.props.ParkingTime(obj_2)
-        })
+        // database.child("parking-time").on("child_added", (snapshot) => {
+        //     let obj_2 = snapshot.val();
+        //     obj_2.id = snapshot.key;
+        //     this.props.ParkingTime(obj_2)
+        // })
     }
     handleClickOpen = () => {
         this.setState({ open: true });
@@ -101,11 +102,24 @@ class Dashboard extends Component {
         this.setState({ open2: false });
     };
 
+    componentWillUnmount() {
+        console.log("==============================")
+        this.props.ParkingTimeEmpty()
+    }
+
 
 
 
     bookingHandler(data) {
         // let currentUserID = firebase.auth().currentUser.uid;
+        database.child("parking-time").on("child_added", (snapshot) => {
+            let obj_2 = snapshot.val();
+            obj_2.id = snapshot.key;
+            this.props.ParkingTime(obj_2)
+            console.log("////")
+        })
+
+
         this.setState({ num: data.numberOfSlots })
         this.props.Parking_ID(data.id)
         this.props.slotsAction(data.bookingArr)
@@ -139,8 +153,11 @@ class Dashboard extends Component {
                 slotes[value.nodeNumber].sloteNumber = value.sloteNumber;
                 database.child(`Parkings/${value.parkinID}/bookingArr/${value.nodeNumber}`).set(slotes[value.nodeNumber])
             }
-
         })
+
+
+
+
     }
 
     bookingCuntineu() {
@@ -465,6 +482,9 @@ const mapDispatchToProp = (dispatch) => {
         },
         ParkingTime: (data) => {
             dispatch(ParkingTime(data))
+        },
+        ParkingTimeEmpty: (data) => {
+            dispatch(ParkingTimeEmpty(data))
         },
     };
 };

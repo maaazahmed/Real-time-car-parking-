@@ -35,16 +35,9 @@ class ViweBooking extends Component {
     let mySlots = this.props.selected_Data.mySlots
     let slots = {
       active: false,
-      areaName: "Parking 1",
-      currentUserID: null,
-      endTime: null,
       index: val.nodeNumber,
-      parkinID: val.parkinID,
-      sloteNumber: val.sloteNumber,
-      startTime: null,
     }
     console.log(val.endTime)
-
     database.child(`selected-parking/${this.state.currentUserID}/${val.id}`).remove()
     database.child(`Parkings/${val.parkinID}/bookingArr/${val.nodeNumber}/`).set(slots)
     let newSlots = mySlots.slice(0, ind).concat(mySlots.slice(ind + 1))
@@ -53,19 +46,19 @@ class ViweBooking extends Component {
 
   render() {
 
-    this.props.selected_Data.mySlots.map((val, index) => {
+    this.props.selected_Data.mySlots.map((newVal, index) => {
       let slots = {
         active: false,
         areaName: "Parking 1",
         currentUserID: null,
         endTime: null,
-        index: val.nodeNumber,
-        parkinID: val.parkinID,
-        sloteNumber: val.sloteNumber,
+        index: newVal.nodeNumber,
+        parkinID: newVal.parkinID,
+        sloteNumber: newVal.sloteNumber,
         startTime: null,
       }
-      if (val.endTime < new Date().getTime()) {
-        database.child(`selected-parking/${this.state.currentUserID}/${val.id}`).remove()
+      if (newVal.endTime < new Date().getTime()) {
+        database.child(`selected-parking/${this.state.currentUserID}/${newVal.id}`).remove()
       }
 
     })

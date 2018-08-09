@@ -89,7 +89,7 @@ class Header extends Component {
                                     open={Boolean(anchorEl)}
                                     onClose={this.handleMenuClose}>
                                     <MenuItem onClick={() => {
-                                        this.props.EmptyParkingList()
+                                        // this.props.EmptyParkingList()
                                         this.handleMenuClose()
                                         this.props.EmptyAllbooking()
                                         this.props.EmptyParUserList()
@@ -102,7 +102,7 @@ class Header extends Component {
                                             this.props.EmptyParkingList()
                                             this.handleMenuClose()
                                             this.props.EmptySelectedSlots()
-                                            this.props.EmptyAllbooking()
+                                            // this.props.EmptyAllbooking()
                                             this.props.EmptyParUserList()
 
                                             history.push("/ViweBooking")
@@ -120,8 +120,8 @@ class Header extends Component {
                                         <MenuItem
                                             onClick={() => {
                                                 this.props.EmptyAllbooking()
-                                                this.props.EmptyParUserList()
-                                            this.props.EmptyParkingList()
+                                                // this.props.EmptyParUserList()
+                                                this.props.EmptyParkingList()
 
                                                 history.push("/Users")
 

@@ -13,20 +13,8 @@ const INITIAL_STATE = {
     sselectedData: {},
     isRegisterError: "",
     userLst: [],
-    parkingTime: [
-        // {
-        //     active:false,
-        //     sloteNumber: " slots[index].sloteNumber",
-        //     areaName: " slots[index].areaName",
-        //     parkinID: "slots[index].parkinID",
-        //     nodeNumber: "index",
-        //     endTime: "slots[index].endTime",
-        //     startTime: "slots[index].startTime",
-        //     currentUserID: "slots[index].currentUserID",
-        // }
-    ]
+    parkingTime: []
 }
-// DELETE_SLOT:"DELETE_SLOT",
 
 
 export default (state = INITIAL_STATE, action) => {
@@ -96,6 +84,12 @@ export default (state = INITIAL_STATE, action) => {
             return ({
                 ...state,
                 mySlots: []
+            })
+
+        case ActionTypes.PARKING_TIME_EMPTY:
+            return ({
+                ...state,
+                parkingTime: []
             })
 
         case ActionTypes.EMPTY_USER_LIST:
