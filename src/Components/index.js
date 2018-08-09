@@ -6,6 +6,7 @@ import AdminComponent from "./Admin/index"
 import AllParkins from "./Admin/AllBookings/index"
 import Users from "./Admin/userList/index"
 import Feedback from "./Feedback"
+import UserFeedback from "./Admin/userFeedback"
 
 export {
     CreateAccount,
@@ -15,5 +16,6 @@ export {
     AdminComponent,
     AllParkins,
     Users,
-    Feedback
+    Feedback,
+    UserFeedback
 }

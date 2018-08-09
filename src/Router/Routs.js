@@ -8,7 +8,8 @@ import {
     AdminComponent,
     AllParkins,
     Users,
-    Feedback
+    Feedback,
+    UserFeedback
 } from "../Components/index"
 import history from "../History"
 
@@ -29,6 +30,7 @@ class Routers extends Component {
                         <Route  path="/AllParkins" component={AllParkins} />
                         <Route  path="/Users" component={Users} />
                         <Route  path="/Feedback" component={Feedback} />
+                        <Route  path="/UserFeedback" component={UserFeedback} />
                     </div>
                 </Router>
             </div>

@@ -114,8 +114,11 @@ class Header extends Component {
                                             this.props.EmptySelectedSlots()
                                             // this.props.EmptyAllbooking()
                                             this.props.EmptyParUserList()
-
-                                            history.push("/Feedback")
+                                            
+                                           { (this.props.user.currentUser.accountType === "admin") ?
+                                            history.push("/UserFeedback")
+                                            :
+                                            history.push("/Feedback")}
                                         }}>Feedback</MenuItem>
                                     {(this.props.user.currentUser.accountType === "admin") ?
                                         <MenuItem

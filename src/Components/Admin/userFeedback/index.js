@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './index.css';
-import Header from "../AppBar/index"
+import Header from "../../AppBar/index"
 import firebase from "firebase";
 // import { UserList, deleteUser } from "../../../store/action/action"
 // import history from "../../../History"
@@ -13,7 +13,7 @@ import Button from '@material-ui/core/Button';
 
 
 let database = firebase.database().ref("/")
-class Feedback extends Component {
+class UserFeedback extends Component {
     constructor() {
         super()
         this.state = {
@@ -55,8 +55,8 @@ class Feedback extends Component {
             <br/>
             {/* <br/> */}
             <br/>
-            <h1 style={{textAlign:"center"}} >Feedback</h1>
-                <div>
+            <h1 style={{textAlign:"center"}} >Feedbacks</h1>
+                {/* <div>
                     <Card className="feedback_card" >
                         <CardContent>
                             <TextField
@@ -79,7 +79,7 @@ class Feedback extends Component {
                                 variant="contained" color="primary">Submit</Button>
                         </CardActions>
                     </Card>
-                </div>
+                </div> */}
             </div>
         );
     }
@@ -101,5 +101,5 @@ const mapDispatchToProp = (dispatch) => {
 };
 
 
-export default connect(mapStateToProp, mapDispatchToProp)(Feedback)
+export default connect(mapStateToProp, mapDispatchToProp)(UserFeedback)
 
