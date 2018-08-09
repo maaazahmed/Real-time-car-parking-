@@ -20,8 +20,6 @@ const ActionTypes = {
   DELETE_USER:"DELETE_USER",
   EMPTY_USER_LIST:"EMPTY_USER_LIST",
   PARKING_TIME_EMPTY:"PARKING_TIME_EMPTY"
-  
-
 }
 
 export default ActionTypes

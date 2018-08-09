@@ -16,7 +16,7 @@ const INITIAL_STATE = {
     parkingTime: []
 }
 
-
+// PARKING_TIME_EMPTY
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case ActionTypes.IS_SIGN_LODER:

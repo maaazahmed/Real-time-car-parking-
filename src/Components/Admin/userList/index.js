@@ -61,7 +61,7 @@ class Users extends Component {
                         console.log(val)
                         return (
                             <div key={inde} >
-                                {(this.state.currentUserID === val.id) ?
+                                {(this.state.currentUserID !== val.id) ?
                                     <Card className="slots_button_list">
                                         <CardContent
                                             className="CardContent_class">

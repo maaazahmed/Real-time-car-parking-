@@ -119,7 +119,6 @@ class Dashboard extends Component {
             console.log("////")
         })
 
-
         this.setState({ num: data.numberOfSlots })
         this.props.Parking_ID(data.id)
         this.props.slotsAction(data.bookingArr)
@@ -154,10 +153,7 @@ class Dashboard extends Component {
                 database.child(`Parkings/${value.parkinID}/bookingArr/${value.nodeNumber}`).set(slotes[value.nodeNumber])
             }
         })
-
-
-
-
+        this.props.ParkingTimeEmpty()
     }
 
     bookingCuntineu() {
@@ -195,7 +191,7 @@ class Dashboard extends Component {
                         currentUserID: slots[index].currentUserID,
                     }
                     database.child(`parking-time`).push(slotObj)
-                    database.child(`selected-parking/${currentUserID}`).push(slotObj)
+                    // database.child(`selected-parking/${currentUserID}`).push(slotObj)
                     break;
                 }
 
