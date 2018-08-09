@@ -38,7 +38,7 @@ class ViweBooking extends Component {
       index: val.nodeNumber,
     }
     console.log(val.parkinID)
-    // database.child(`selected-parking/${this.state.currentUserID}/${val.id}`).remove()
+    database.child(`parking-time/${val.id}`).remove()
     database.child(`Parkings/${val.parkinID}/bookingArr/${val.nodeNumber}/`).set(slots)
     let newSlots = mySlots.slice(0, ind).concat(mySlots.slice(ind + 1))
     this.props.DeleteSlotAction(newSlots)
