@@ -137,7 +137,7 @@ class Dashboard extends Component {
                 slotes[value.nodeNumber].parkinID = value.parkinID;
                 slotes[value.nodeNumber].sloteNumber = value.sloteNumber;
                 database.child(`Parkings/${value.parkinID}/bookingArr/${value.nodeNumber}`).set(slotes[value.nodeNumber])
-                this.props.ParkingTimeEmpty()
+                // this.props.ParkingTimeEmpty()
             }
             else if (value.endTime <= new Date().getTime() && data.id === value.parkinID) {
                 database.child(`parking-time/${value.id}/`).remove()

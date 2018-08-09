@@ -7,7 +7,8 @@ import {
     ViweBooking,
     AdminComponent,
     AllParkins,
-    Users
+    Users,
+    Feedback
 } from "../Components/index"
 import history from "../History"
 
@@ -27,6 +28,7 @@ class Routers extends Component {
                         <Route  path="/Admin" component={AdminComponent} />
                         <Route  path="/AllParkins" component={AllParkins} />
                         <Route  path="/Users" component={Users} />
+                        <Route  path="/Feedback" component={Feedback} />
                     </div>
                 </Router>
             </div>

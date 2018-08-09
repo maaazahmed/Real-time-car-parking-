@@ -5,6 +5,7 @@ import ViweBooking from "./viewBooking/index";
 import AdminComponent from "./Admin/index"
 import AllParkins from "./Admin/AllBookings/index"
 import Users from "./Admin/userList/index"
+import Feedback from "./Feedback"
 
 export {
     CreateAccount,
@@ -13,5 +14,6 @@ export {
     ViweBooking,
     AdminComponent,
     AllParkins,
-    Users
+    Users,
+    Feedback
 }

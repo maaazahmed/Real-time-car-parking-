@@ -107,6 +107,16 @@ class Header extends Component {
 
                                             history.push("/ViweBooking")
                                         }}>View booking</MenuItem>
+                                    <MenuItem
+                                        onClick={() => {
+                                            this.props.EmptyParkingList()
+                                            this.handleMenuClose()
+                                            this.props.EmptySelectedSlots()
+                                            // this.props.EmptyAllbooking()
+                                            this.props.EmptyParUserList()
+
+                                            history.push("/Feedback")
+                                        }}>Feedback</MenuItem>
                                     {(this.props.user.currentUser.accountType === "admin") ?
                                         <MenuItem
                                             onClick={() => {
