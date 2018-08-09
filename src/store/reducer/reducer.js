@@ -26,6 +26,8 @@ const INITIAL_STATE = {
         // }
     ]
 }
+// DELETE_SLOT:"DELETE_SLOT",
+
 
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
@@ -67,10 +69,15 @@ export default (state = INITIAL_STATE, action) => {
                 mySlots: [...state.mySlots, action.payload]
             })
 
-        case ActionTypes.DELETE_SLOT:
+            case ActionTypes.DELETE_SLOT:
             return ({
                 ...state,
                 mySlots: [...action.payload]
+            })
+            case ActionTypes.DELETE_BOOKINGs:
+            return ({
+                ...state,
+                allBooking: [...action.payload]
             })
 
 
@@ -118,6 +125,11 @@ export default (state = INITIAL_STATE, action) => {
             return ({
                 ...state,
                 parkingTime: [...state.parkingTime, action.payload]
+            })
+            case ActionTypes.EMPTY_ALL_BOOKING_LIST:
+            return ({
+                ...state,
+                allBooking: []
             })
         default:
             return state;

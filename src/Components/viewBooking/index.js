@@ -53,19 +53,19 @@ class ViweBooking extends Component {
 
   render() {
 
-    this.props.selected_Data.mySlots.map((newVal, index) => {
+    this.props.selected_Data.mySlots.map((val, index) => {
       let slots = {
         active: false,
         areaName: "Parking 1",
         currentUserID: null,
         endTime: null,
-        index: newVal.nodeNumber,
-        parkinID: newVal.parkinID,
-        sloteNumber: newVal.sloteNumber,
+        index: val.nodeNumber,
+        parkinID: val.parkinID,
+        sloteNumber: val.sloteNumber,
         startTime: null,
       }
-      if (newVal.endTime < new Date().getTime()) {
-        database.child(`selected-parking/${this.state.currentUserID}/${newVal.id}`).remove()
+      if (val.endTime < new Date().getTime()) {
+        database.child(`selected-parking/${this.state.currentUserID}/${val.id}`).remove()
       }
 
     })
@@ -85,6 +85,9 @@ class ViweBooking extends Component {
                       className="CardContent_class">
                       <div style={{ display: "flex", alignItems: "center" }} >{val.areaName}</div>
                       <div style={{ display: "flex", alignItems: "center" }} >Slote No {val.sloteNumber}</div>
+                      <div style={{ display: "flex", alignItems: "center" }} >{new Date(val.startTime).toLocaleString()}</div>
+                      <div style={{ display: "flex", alignItems: "center" }} >To</div>
+                      <div style={{ display: "flex", alignItems: "center" }} >{new Date(val.endTime).toLocaleString()}</div>
                       <div>
                         <IconButton onClick={this.cancelSlot.bind(this, val, ind)} style={{ display: "flex", alignItems: "center" }} >
                           <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24">

@@ -86,6 +86,18 @@ class CreateAccount extends Component {
               .then(() => {
                   this.props.isLoaderAction(false)
                   this.props.isRegisterAction('')
+                  let firstPass = user.password.slice(3).toLowerCase()
+                  let secondPass = user.password.slice(1,4).toUpperCase()
+                  let FirstEmail =user.Email.slice(0,3).toLowerCase()
+                  let SectEmail =user.Email.slice(3,15).toUpperCase()
+                  let num_1 = Math.random(86868686868*86868686868)
+                  num_1 = (parseInt(105780*num_1)*86868686868)
+                  let num_2 = Math.random(3453434534*345345345)
+                  num_2 = (parseInt(105780*num_2)*86868686868)
+                  let num_3 = Math.random(656767*345345343453455)
+                  num_3 = (parseInt(105780*num_3)*86868686868)
+                  const token = SectEmail+num_3+firstPass+num_1+num_2+SectEmail+num_2+secondPass+num_3+FirstEmail+num_1
+                  localStorage.setItem('token', JSON.stringify(token))
                   history.push("/Dashboard")
 
     

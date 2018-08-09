@@ -147,6 +147,23 @@ export const ParkingTime = (data) => {
         })
     }
 }
+export const deleteAllbooking = (data) => {
+    return dispatch => {
+        dispatch({
+            type: ActionTypes.DELETE_BOOKINGs,
+            payload: data
+        })
+    }
+}
+
+export const EmptyAllbooking = (data) => {
+    return dispatch => {
+        dispatch({
+            type: ActionTypes.EMPTY_ALL_BOOKING_LIST,
+            payload: data
+        })
+    }
+}
 
 
 export const ClearState = (data) => {

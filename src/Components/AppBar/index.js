@@ -13,7 +13,8 @@ import {
     EmptyParkingList,
     EmptySelectedSlots,
     currentUserData,
-    ClearState
+    ClearState,
+    EmptyAllbooking
 
 } from "../../store/action/action"
 
@@ -35,7 +36,7 @@ class Header extends Component {
     };
 
 
-    componentWillMount(){
+    componentWillMount() {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 database.child(`user/${user.uid}`).on("value", (snapshot) => {
@@ -69,7 +70,7 @@ class Header extends Component {
                             <Typography variant="title"
                                 color="inherit">
                                 {this.props.heading}
-                           </Typography>
+                            </Typography>
                             <div>
                                 <IconButton
                                     onClick={this.handleMenuOpen}
@@ -89,32 +90,37 @@ class Header extends Component {
                                     <MenuItem onClick={() => {
                                         this.props.EmptyParkingList()
                                         this.handleMenuClose()
+                                        this.props.EmptyAllbooking()
                                         history.push("/Dashboard")
                                     }}>Book Parking
                                     </MenuItem>
-                                  
+
                                     <MenuItem
                                         onClick={() => {
                                             this.props.EmptyParkingList()
                                             this.handleMenuClose()
                                             this.props.EmptySelectedSlots()
+                                            this.props.EmptyAllbooking()
                                             history.push("/ViweBooking")
                                         }}>View booking</MenuItem>
-                                  {(this.props.user.currentUser.accountType === "admin")?
-                                    <MenuItem
-                                        onClick={() => {
-                                            history.push("/AllParkins")}}>
-                                        All Bookings
+                                    {(this.props.user.currentUser.accountType === "admin") ?
+                                        <MenuItem
+                                            onClick={() => {
+                                                history.push("/AllParkins")
+                                            }}>
+                                            All Bookings
                                     </MenuItem>
-                                    :null}
+                                        : null}
 
-                                     {(this.props.user.currentUser.accountType === "admin")?
-                                    <MenuItem
-                                        onClick={() => {
-                                            history.push("/Users")}}>
-                                        All Users
+                                    {(this.props.user.currentUser.accountType === "admin") ?
+                                        <MenuItem
+                                            onClick={() => {
+                                                this.props.EmptyAllbooking()
+                                                history.push("/Users")
+                                            }}>
+                                            All Users
                                     </MenuItem>
-                                    :null}
+                                        : null}
 
 
 
@@ -155,11 +161,14 @@ const mapDispatchToProp = (dispatch) => {
         EmptySelectedSlots: (data) => {
             dispatch(EmptySelectedSlots(data))
         },
-        currentUserData:(data) => {
+        currentUserData: (data) => {
             dispatch(currentUserData(data))
         },
-        ClearState:(data) => {
+        ClearState: (data) => {
             dispatch(ClearState(data))
+        },
+        EmptyAllbooking: (data) => {
+            dispatch(EmptyAllbooking(data))
         },
 
 
