@@ -69,15 +69,21 @@ export default (state = INITIAL_STATE, action) => {
                 mySlots: [...state.mySlots, action.payload]
             })
 
-            case ActionTypes.DELETE_SLOT:
+        case ActionTypes.DELETE_SLOT:
             return ({
                 ...state,
                 mySlots: [...action.payload]
             })
-            case ActionTypes.DELETE_BOOKINGs:
+        case ActionTypes.DELETE_BOOKINGs:
             return ({
                 ...state,
                 allBooking: [...action.payload]
+            })
+
+        case ActionTypes.DELETE_USER:
+            return ({
+                ...state,
+                userLst: [...action.payload]
             })
 
 
@@ -90,6 +96,12 @@ export default (state = INITIAL_STATE, action) => {
             return ({
                 ...state,
                 mySlots: []
+            })
+
+        case ActionTypes.EMPTY_USER_LIST:
+            return ({
+                ...state,
+                userLst: []
             })
 
         case ActionTypes.EMPTY_PARKING_SELECT:
@@ -126,7 +138,7 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 parkingTime: [...state.parkingTime, action.payload]
             })
-            case ActionTypes.EMPTY_ALL_BOOKING_LIST:
+        case ActionTypes.EMPTY_ALL_BOOKING_LIST:
             return ({
                 ...state,
                 allBooking: []

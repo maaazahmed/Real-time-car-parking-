@@ -98,6 +98,15 @@ export const EmptyParkingList = (data) => {
     }
 }
 
+export const EmptyParUserList = (data) => {
+    return dispatch => {
+        dispatch({
+            type: ActionTypes.EMPTY_USER_LIST,
+            payload: data
+        })
+    }
+}
+
 export const EmptySelectedSlots = (data) => {
     return dispatch => {
         dispatch({
@@ -132,7 +141,7 @@ export const AllBookings = (data) => {
 export const UserList = (data) => {
     return dispatch => {
         dispatch({
-            type: ActionTypes.ALL_BOOKING,
+            type: ActionTypes.USER_LIST,
             payload: data
         })
     }
@@ -151,6 +160,15 @@ export const deleteAllbooking = (data) => {
     return dispatch => {
         dispatch({
             type: ActionTypes.DELETE_BOOKINGs,
+            payload: data
+        })
+    }
+}
+
+export const deleteUser = (data) => {
+    return dispatch => {
+        dispatch({
+            type: ActionTypes.DELETE_USER,
             payload: data
         })
     }

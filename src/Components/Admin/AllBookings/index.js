@@ -40,7 +40,6 @@ class AllParkins extends Component {
         })
     }
 
-
     deleteParking(data, indexNum) {
         let slots = {
             active: false,

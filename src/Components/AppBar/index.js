@@ -14,7 +14,8 @@ import {
     EmptySelectedSlots,
     currentUserData,
     ClearState,
-    EmptyAllbooking
+    EmptyAllbooking,
+    EmptyParUserList
 
 } from "../../store/action/action"
 
@@ -91,6 +92,7 @@ class Header extends Component {
                                         this.props.EmptyParkingList()
                                         this.handleMenuClose()
                                         this.props.EmptyAllbooking()
+                                        this.props.EmptyParUserList()
                                         history.push("/Dashboard")
                                     }}>Book Parking
                                     </MenuItem>
@@ -101,6 +103,8 @@ class Header extends Component {
                                             this.handleMenuClose()
                                             this.props.EmptySelectedSlots()
                                             this.props.EmptyAllbooking()
+                                            this.props.EmptyParUserList()
+
                                             history.push("/ViweBooking")
                                         }}>View booking</MenuItem>
                                     {(this.props.user.currentUser.accountType === "admin") ?
@@ -116,7 +120,11 @@ class Header extends Component {
                                         <MenuItem
                                             onClick={() => {
                                                 this.props.EmptyAllbooking()
+                                                this.props.EmptyParUserList()
+                                            this.props.EmptyParkingList()
+
                                                 history.push("/Users")
+
                                             }}>
                                             All Users
                                     </MenuItem>
@@ -169,6 +177,9 @@ const mapDispatchToProp = (dispatch) => {
         },
         EmptyAllbooking: (data) => {
             dispatch(EmptyAllbooking(data))
+        },
+        EmptyParUserList: (data) => {
+            dispatch(EmptyParUserList(data))
         },
 
 
