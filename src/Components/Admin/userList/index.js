@@ -27,7 +27,7 @@ class Users extends Component {
 
     deleteUser(data, index) {
         let userList = this.props.userLis.userLst 
-        // database.child(`selected-parking/${data.id}`).remove()
+        database.child(`selected-parking/${data.id}`).remove()
         userList = userList.slice(0, index).concat(userList.slice(index + 1))
         this.props.deleteUser(userList)
 
