@@ -24,7 +24,8 @@ class Header extends Component {
     constructor() {
         super()
         this.state = {
-            anchorEl: null
+            anchorEl: null,
+            currentUser:""
         }
     }
 
@@ -44,7 +45,7 @@ class Header extends Component {
                     let user = snapshot.val()
                     user.id = snapshot.key
                     this.props.currentUserData(user)
-
+                    this.setState({currentUser:user})
                 })
 
             }
@@ -54,6 +55,7 @@ class Header extends Component {
 
     render() {
         const { anchorEl } = this.state;
+        console.log(this.state.currentUser.username)
         return (
             <div>
                 <div >
@@ -70,7 +72,7 @@ class Header extends Component {
                             variant="dense">
                             <Typography variant="title"
                                 color="inherit">
-                                {this.props.heading}
+                                {this.state.currentUser.username}
                             </Typography>
                             <div>
                                 <IconButton
@@ -94,6 +96,7 @@ class Header extends Component {
                                         this.props.EmptyAllbooking()
                                         this.props.EmptyParUserList()
                                         history.push("/Dashboard")
+                                        
                                     }}>Book Parking
                                     </MenuItem>
 

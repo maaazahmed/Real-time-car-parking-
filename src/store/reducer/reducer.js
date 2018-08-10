@@ -13,10 +13,10 @@ const INITIAL_STATE = {
     sselectedData: {},
     isRegisterError: "",
     userLst: [],
-    parkingTime: []
+    parkingTime: [],
+    feedback: []
 }
 
-// PARKING_TIME_EMPTY
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case ActionTypes.IS_SIGN_LODER:
@@ -57,10 +57,21 @@ export default (state = INITIAL_STATE, action) => {
                 mySlots: [...state.mySlots, action.payload]
             })
 
+        case ActionTypes.USER_FEEDBACK:
+            return ({
+                ...state,
+                feedback: [...state.feedback, action.payload]
+            })
+
         case ActionTypes.DELETE_SLOT:
             return ({
                 ...state,
                 mySlots: [...action.payload]
+            })
+        case ActionTypes.USER_FEEDBACK_EMPTY:
+            return ({
+                ...state,
+                feedback: []
             })
         case ActionTypes.DELETE_BOOKINGs:
             return ({

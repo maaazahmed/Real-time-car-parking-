@@ -202,3 +202,23 @@ export const ClearState = (data) => {
         })
     }
 }
+
+
+export const FeedbackAction = (data) => {
+    return dispatch => {
+        dispatch({
+            type: ActionTypes.USER_FEEDBACK,
+            payload: data
+        })
+    }
+}
+
+export const FeedbackActionEmpty = (data) => {
+    return dispatch => {
+        dispatch({
+            type: ActionTypes.USER_FEEDBACK_EMPTY,
+            payload: data
+        })
+    }
+}
+

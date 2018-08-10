@@ -17,7 +17,7 @@ class Feedback extends Component {
     constructor() {
         super()
         this.state = {
-            currentUserID: "",
+            currentUser: "",
             feedbackVal: ""
         }
     }
@@ -28,14 +28,30 @@ class Feedback extends Component {
         })
     }
 
+    componentWillMount() {
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                this.setState({ currentUser: user })
+                database.child(`user/${user.uid}`).on("value", (snap) => {
+                    let obj = snap.val()
+                    obj.id = snap.key
+                    this.setState({ currentUser: obj })
+
+                })
+            }
+        });
+    }
+
     submitFeedback() {
         if (this.state.feedbackVal !== "") {
             let obj = {
-                feedback: this.state.feedbackVal
+                feedback: this.state.feedbackVal,
+                username: this.state.currentUser.username,
+                currentUserID: this.state.currentUser.id
             }
             database.child("Feedback").push(obj)
         }
-        else{
+        else {
             alert("Please write somthing")
         }
     }
@@ -43,19 +59,17 @@ class Feedback extends Component {
 
 
     render() {
-
         return (
             <div className="App">
-            <div>
-                <Header/>
-            </div>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            {/* <br/> */}
-            <br/>
-            <h1 style={{textAlign:"center"}} >Feedback</h1>
+                <div>
+                    <Header />
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <h1 style={{ textAlign: "center" }} >Feedback</h1>
                 <div>
                     <Card className="feedback_card" >
                         <CardContent>
@@ -70,6 +84,7 @@ class Feedback extends Component {
                                 margin="normal"
                                 value={this.state.feedbackVal}
                                 name="feedbackVal"
+                                style={{overflow:"hidden"}}
                                 onChange={this.onChangeHandler.bind(this)}
                             />
                         </CardContent>
