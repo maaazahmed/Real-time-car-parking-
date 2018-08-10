@@ -52,7 +52,7 @@ class Dashboard extends Component {
             startTime: "",
             endTime: "",
             localSlot: {},
-            isLoader:false
+            isLoader: false
         }
     }
     componentWillMount() {
@@ -122,44 +122,44 @@ class Dashboard extends Component {
             console.log("////")
         })
 
-        
 
 
-            this.setState({ num: data.numberOfSlots })
-            this.props.Parking_ID(data.id)
-            this.props.slotsAction(data.bookingArr)
-            this.props.AreaNameAction(data.parkingAreaVal)
-            this.props.Parking_Time.parkingTime.map((value) => {
+
+        this.setState({ num: data.numberOfSlots })
+        this.props.Parking_ID(data.id)
+        this.props.slotsAction(data.bookingArr)
+        this.props.AreaNameAction(data.parkingAreaVal)
+        this.props.Parking_Time.parkingTime.map((value) => {
+            let slotes = data.bookingArr;
+            if (value.startTime <= new Date().getTime() && value.endTime >=
+                new Date().getTime() && data.id === value.parkinID) {
                 let slotes = data.bookingArr;
-                if (value.startTime <= new Date().getTime() && value.endTime >=
-                    new Date().getTime() && data.id === value.parkinID) {
-                    let slotes = data.bookingArr;
-                    slotes[value.nodeNumber].active = true;
-                    slotes[value.nodeNumber].endTime = value.endTime;
-                    slotes[value.nodeNumber].startTime = value.startTime;
-                    slotes[value.nodeNumber].areaName = value.areaName;
-                    slotes[value.nodeNumber].currentUserID = value.currentUserID;
-                    slotes[value.nodeNumber].index = value.nodeNumber;
-                    slotes[value.nodeNumber].parkinID = value.parkinID;
-                    slotes[value.nodeNumber].sloteNumber = value.sloteNumber;
-                    database.child(`Parkings/${value.parkinID}/bookingArr/${value.nodeNumber}`).set(slotes[value.nodeNumber])
-                    // this.props.ParkingTimeEmpty()
-                }
-                else if (value.endTime <= new Date().getTime() && data.id === value.parkinID) {
-                    database.child(`parking-time/${value.id}/`).remove()
-                    let slotes = data.bookingArr;
-                    slotes[value.nodeNumber].active = false;
-                    slotes[value.nodeNumber].endTime = value.endTime;
-                    slotes[value.nodeNumber].startTime = value.startTime;
-                    slotes[value.nodeNumber].areaName = value.areaName;
-                    slotes[value.nodeNumber].currentUserID = value.currentUserID;
-                    slotes[value.nodeNumber].index = value.nodeNumber;
-                    slotes[value.nodeNumber].parkinID = value.parkinID;
-                    slotes[value.nodeNumber].sloteNumber = value.sloteNumber;
-                    database.child(`Parkings/${value.parkinID}/bookingArr/${value.nodeNumber}`).set(slotes[value.nodeNumber])
-                    // this.props.ParkingTimeEmpty()
-                }
-            })
+                slotes[value.nodeNumber].active = true;
+                slotes[value.nodeNumber].endTime = value.endTime;
+                slotes[value.nodeNumber].startTime = value.startTime;
+                slotes[value.nodeNumber].areaName = value.areaName;
+                slotes[value.nodeNumber].currentUserID = value.currentUserID;
+                slotes[value.nodeNumber].index = value.nodeNumber;
+                slotes[value.nodeNumber].parkinID = value.parkinID;
+                slotes[value.nodeNumber].sloteNumber = value.sloteNumber;
+                database.child(`Parkings/${value.parkinID}/bookingArr/${value.nodeNumber}`).set(slotes[value.nodeNumber])
+                // this.props.ParkingTimeEmpty()
+            }
+            else if (value.endTime <= new Date().getTime() && data.id === value.parkinID) {
+                database.child(`parking-time/${value.id}/`).remove()
+                let slotes = data.bookingArr;
+                slotes[value.nodeNumber].active = false;
+                slotes[value.nodeNumber].endTime = value.endTime;
+                slotes[value.nodeNumber].startTime = value.startTime;
+                slotes[value.nodeNumber].areaName = value.areaName;
+                slotes[value.nodeNumber].currentUserID = value.currentUserID;
+                slotes[value.nodeNumber].index = value.nodeNumber;
+                slotes[value.nodeNumber].parkinID = value.parkinID;
+                slotes[value.nodeNumber].sloteNumber = value.sloteNumber;
+                database.child(`Parkings/${value.parkinID}/bookingArr/${value.nodeNumber}`).set(slotes[value.nodeNumber])
+                // this.props.ParkingTimeEmpty()
+            }
+        })
         // }, 1000)
     }
 
@@ -202,29 +202,25 @@ class Dashboard extends Component {
                 }
 
 
-                // else if (
-                //     (this.props.Parking_Time.parkingTime[i].startTime > startTime
-                //     && this.props.Parking_Time.parkingTime[i].endTime < endTime
-                //     && endTime > this.props.Parking_Time.parkingTime[i].startTime
-                
-                // )
-                    
-                //     && this.props.Parking_Time.parkingTime[i].parkinID === parkinID
-                //     && this.props.Parking_Time.parkingTime[i].nodeNumber === index) {
-                //     alert("This slot is already selected 1")
-                //     break;
-                // }
-                
                 else if (
-                    (this.props.Parking_Time.parkingTime[i].startTime >= startTime
-                    && this.props.Parking_Time.parkingTime[i].endTime >= endTime)
-                    && endTime > this.props.Parking_Time.parkingTime[i].startTime
+                    (this.props.Parking_Time.parkingTime[i].startTime > startTime
+                        && this.props.Parking_Time.parkingTime[i].endTime < endTime
+                    )
                     && this.props.Parking_Time.parkingTime[i].parkinID === parkinID
                     && this.props.Parking_Time.parkingTime[i].nodeNumber === index) {
                     alert("This slot is already selected 1")
                     break;
                 }
-                
+
+                else if (
+                    (this.props.Parking_Time.parkingTime[i].startTime > startTime && this.props.Parking_Time.parkingTime[i].endTime >= endTime && endTime > this.props.Parking_Time.parkingTime[i].startTime)
+                    && this.props.Parking_Time.parkingTime[i].endTime > startTime
+                    && this.props.Parking_Time.parkingTime[i].parkinID === parkinID
+                    && this.props.Parking_Time.parkingTime[i].nodeNumber === index) {
+                    alert("This slot is already selected 1")
+                    break;
+                }
+
 
                 else if (this.props.Parking_Time.parkingTime[i].startTime <= startTime
                     && this.props.Parking_Time.parkingTime[i].endTime >= endTime
@@ -457,12 +453,12 @@ class Dashboard extends Component {
                             </div>}
 
 
-                        
-                            {/* <div class="adjust">
+
+                        {/* <div class="adjust">
                                 <div class="loader2"></div>
                             </div> */}
-    
-                        
+
+
                         <div className="AddButton">
                             {(this.props.user.currentUser.accountType === "admin") ?
                                 <Button
