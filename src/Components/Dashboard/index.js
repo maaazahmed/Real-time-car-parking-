@@ -185,6 +185,7 @@ class Dashboard extends Component {
             slots[index].areaName = this.props.areaName.areaName
             slots[index].parkinID = this.props.parkinID.parkinID
             slots[index].startTime = startTime;
+            let newdata = this.props.Parking_Time.parkingTime
             var i = 0;
             do {
                 if (this.props.Parking_Time.parkingTime[i] === undefined) {
@@ -203,32 +204,84 @@ class Dashboard extends Component {
 
 
                 else if (
-                    (this.props.Parking_Time.parkingTime[i].startTime > startTime
-                        && this.props.Parking_Time.parkingTime[i].endTime < endTime
+                    (startTime <= newdata[i].startTime && endTime >= newdata[i].startTime && newdata[i].parkinID === parkinID && newdata[i].nodeNumber === index)
+                    ||
+                    (startTime >= newdata[i].startTime && startTime <= newdata[i].endTime && newdata[i].parkinID === parkinID && newdata[i].nodeNumber === index)
+                    // &&
+                    // newdata[i].parkinID === parkinID
+                    // &&
+                    // newdata[i].nodeNumber === index
+                ) {
+                    console.log(
+                        newdata[i].nodeNumber === index
                     )
-                    && this.props.Parking_Time.parkingTime[i].parkinID === parkinID
-                    && this.props.Parking_Time.parkingTime[i].nodeNumber === index) {
                     alert("This slot is already selected 1")
                     break;
                 }
 
-                else if (
-                    (this.props.Parking_Time.parkingTime[i].startTime > startTime && this.props.Parking_Time.parkingTime[i].endTime >= endTime && endTime > this.props.Parking_Time.parkingTime[i].startTime)
-                    && this.props.Parking_Time.parkingTime[i].endTime > startTime
-                    && this.props.Parking_Time.parkingTime[i].parkinID === parkinID
-                    && this.props.Parking_Time.parkingTime[i].nodeNumber === index) {
-                    alert("This slot is already selected 1")
-                    break;
-                }
+                // else if (
+                //     (this.props.Parking_Time.parkingTime[i].startTime >= startTime
+                //         && this.props.Parking_Time.parkingTime[i].endTime <= endTime
+                //         && endTime > this.props.Parking_Time.parkingTime[i].startTime
+                //     )
+                // && this.props.Parking_Time.parkingTime[i].parkinID === parkinID
+                // && this.props.Parking_Time.parkingTime[i].nodeNumber === index) {
+                //     alert("This slot is already selected 1")
+                //     break;
+                // }
 
 
-                else if (this.props.Parking_Time.parkingTime[i].startTime <= startTime
-                    && this.props.Parking_Time.parkingTime[i].endTime >= endTime
-                    && this.props.Parking_Time.parkingTime[i].parkinID === parkinID
-                    && this.props.Parking_Time.parkingTime[i].nodeNumber === index) {
-                    alert("This slot is already selected 2")
-                    break;
-                }
+
+
+
+                // else if (
+                //     (this.props.Parking_Time.parkingTime[i].startTime < startTime
+                //         && this.props.Parking_Time.parkingTime[i].endTime < endTime)
+                //     &&
+                //     (this.props.Parking_Time.parkingTime[i].startTime < endTime
+                //         &&
+                //         this.props.Parking_Time.parkingTime[i].endTime > endTime)
+                //     ||
+                //     (this.props.Parking_Time.parkingTime[i].startTime < startTime
+                //         && this.props.Parking_Time.parkingTime[i].endTime > endTime)
+                //     &&
+                //     (this.props.Parking_Time.parkingTime[i].startTime > endTime
+                //         &&
+                //         this.props.Parking_Time.parkingTime[i].endTime < endTime)
+                // ) {
+                //     alert("Hello")
+                //     break;
+                // }
+                // if((Stime <= newdata[key].starttime && Etime >= newdata[key].starttime) || (Stime >= newdata[key].starttime && Stime<= newdata[key].endtime){ }
+
+
+                // else if (
+                //     (this.props.Parking_Time.parkingTime[i].startTime >= startTime && this.props.Parking_Time.parkingTime[i].endTime >= endTime && endTime >= this.props.Parking_Time.parkingTime[i].startTime)
+                //     && this.props.Parking_Time.parkingTime[i].endTime >= startTime
+                //     && this.props.Parking_Time.parkingTime[i].parkinID === parkinID
+                //     && this.props.Parking_Time.parkingTime[i].nodeNumber === index) {
+                //     alert("This slot is already selected 1")
+                //     break;
+                // }
+
+                // else if (
+                //     (this.props.Parking_Time.parkingTime[i].startTime >= startTime && this.props.Parking_Time.parkingTime[i].endTime >= endTime && endTime >= this.props.Parking_Time.parkingTime[i].startTime)
+                //     && this.props.Parking_Time.parkingTime[i].endTime >= startTime
+                //     && this.props.Parking_Time.parkingTime[i].parkinID === parkinID
+                //     && this.props.Parking_Time.parkingTime[i].nodeNumber === index) {
+                //     alert("This slot is already selected 1")
+                //     break;
+                // }
+                // else if (this.props.Parking_Time.parkingTime[i].startTime <= startTime
+                //     && this.props.Parking_Time.parkingTime[i].endTime >= endTime
+                //     && this.props.Parking_Time.parkingTime[i].parkinID === parkinID
+                //     && this.props.Parking_Time.parkingTime[i].nodeNumber === index) {
+                //     alert("This slot is already selected 2")
+                //     break;
+                // }
+
+
+
                 i++;
             } while (i <= this.props.Parking_Time.parkingTime.length);
 
