@@ -17,6 +17,10 @@ class ViweBooking extends Component {
       endTime: ""
     }
   }
+
+
+
+
   componentDidMount() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -121,6 +125,9 @@ const mapDispatchToProp = (dispatch) => {
     DeleteSlotAction: (data) => {
       dispatch(DeleteSlotAction(data))
     },
+    // EmptyParkingList:(data) => {
+    //   dispatch(EmptyParkingList(data))
+    // },
   };
 };
 

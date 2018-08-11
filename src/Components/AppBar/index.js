@@ -25,7 +25,7 @@ class Header extends Component {
         super()
         this.state = {
             anchorEl: null,
-            currentUser:""
+            currentUser: ""
         }
     }
 
@@ -45,7 +45,7 @@ class Header extends Component {
                     let user = snapshot.val()
                     user.id = snapshot.key
                     this.props.currentUserData(user)
-                    this.setState({currentUser:user})
+                    this.setState({ currentUser: user })
                 })
 
             }
@@ -96,7 +96,9 @@ class Header extends Component {
                                         this.props.EmptyAllbooking()
                                         this.props.EmptyParUserList()
                                         history.push("/Dashboard")
-                                        
+                                        this.props.EmptySelectedSlots()
+
+
                                     }}>Book Parking
                                     </MenuItem>
 
@@ -107,7 +109,6 @@ class Header extends Component {
                                             this.props.EmptySelectedSlots()
                                             // this.props.EmptyAllbooking()
                                             this.props.EmptyParUserList()
-
                                             history.push("/ViweBooking")
                                         }}>View booking</MenuItem>
                                     <MenuItem
@@ -117,11 +118,13 @@ class Header extends Component {
                                             this.props.EmptySelectedSlots()
                                             // this.props.EmptyAllbooking()
                                             this.props.EmptyParUserList()
-                                            
-                                           { (this.props.user.currentUser.accountType === "admin") ?
-                                            history.push("/UserFeedback")
-                                            :
-                                            history.push("/Feedback")}
+
+                                            {
+                                                (this.props.user.currentUser.accountType === "admin") ?
+                                                history.push("/UserFeedback")
+                                                :
+                                                history.push("/Feedback")
+                                            }
                                         }}>Feedback</MenuItem>
                                     {(this.props.user.currentUser.accountType === "admin") ?
                                         <MenuItem
