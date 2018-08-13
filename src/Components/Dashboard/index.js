@@ -196,19 +196,15 @@ class Dashboard extends Component {
                         currentUserID: slots[index].currentUserID,
                     }
                     database.child(`parking-time`).push(slotObj)
-                    history.push("/ViweBooking")
+                    // history.push("/ViweBooking")
                     break;
                 }
 
 
                 else if (
-                    (startTime < newdata[i].startTime && endTime > newdata[i].startTime && newdata[i].parkinID === parkinID && newdata[i].nodeNumber === index)
+                    (startTime <= newdata[i].startTime && endTime > newdata[i].startTime && newdata[i].parkinID === parkinID && newdata[i].nodeNumber === index)
                     ||
-                    (startTime > newdata[i].startTime && startTime < newdata[i].endTime && newdata[i].parkinID === parkinID && newdata[i].nodeNumber === index)
-                    // &&
-                    // newdata[i].parkinID === parkinID
-                    // &&
-                    // newdata[i].nodeNumber === index
+                    (startTime >= newdata[i].startTime && startTime < newdata[i].endTime && newdata[i].parkinID === parkinID && newdata[i].nodeNumber === index)
                 ) {
                     console.log(
                         newdata[i].nodeNumber === index
