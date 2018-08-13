@@ -155,7 +155,7 @@ class Header extends Component {
 
                                     <MenuItem
                                         onClick={() => {
-                                            history.push("login");
+                                            history.push("/");
                                             localStorage.removeItem("token")
                                             this.props.ClearState()
                                         }}>Logout</MenuItem>

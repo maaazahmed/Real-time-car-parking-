@@ -58,7 +58,7 @@ class Dashboard extends Component {
     componentWillMount() {
         let checkAouth = localStorage.getItem("token")
         if (checkAouth == null) {
-            history.push("/logIn");
+            history.push("/");
         }
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
@@ -77,11 +77,11 @@ class Dashboard extends Component {
             this.props.ParkingAction(obj)
         })
 
-        // database.child("parking-time").on("child_added", (snapshot) => {
-        //     let obj_2 = snapshot.val();
-        //     obj_2.id = snapshot.key;
-        //     this.props.ParkingTime(obj_2)
-        // })
+        database.child("parking-time").on("child_added", (snapshot) => {
+            let obj_2 = snapshot.val();
+            obj_2.id = snapshot.key;
+            this.props.ParkingTime(obj_2)
+        })
     }
     handleClickOpen = () => {
         this.setState({ open: true });
@@ -115,12 +115,12 @@ class Dashboard extends Component {
 
 
     bookingHandler(data) {
-        database.child("parking-time").on("child_added", (snapshot) => {
-            let obj_2 = snapshot.val();
-            obj_2.id = snapshot.key;
-            this.props.ParkingTime(obj_2)
-            console.log("////")
-        })
+        // database.child("parking-time").on("child_added", (snapshot) => {
+        //     let obj_2 = snapshot.val();
+        //     obj_2.id = snapshot.key;
+        //     this.props.ParkingTime(obj_2)
+        //     console.log("////")
+        // })
 
         this.setState({ num: data.numberOfSlots })
         this.props.Parking_ID(data.id)

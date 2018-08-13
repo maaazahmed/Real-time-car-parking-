@@ -230,7 +230,7 @@ class CreateAccount extends Component {
           <div 
           className="Creat-account-button-container" >
             <button
-             onClick={()=>{history.push("/login")}} 
+             onClick={()=>{history.push("/")}} 
             className="Creat-account-button" >
               Alredy an Account
            </button>
